@@ -3,10 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" 
-        xmlns:local="clr-namespace:GensokyoRadio" mc:Ignorable="d"           
+        xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes" mc:Ignorable="d"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Medium" TextElement.FontSize="14" 
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Medium" TextElement.FontSize="14"
         Background="Transparent" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Topmost="True"
         Title="Gensokyo Radio" Height="128" Width="256" Icon="music-box.ico">
     <Grid>
@@ -16,22 +15,21 @@
             </Rectangle.Effect>
         </Rectangle>
 
-        <Label Content="Gensokyo Radio" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="4,4,0,0"/>
+        <Label x:Name="Head" Content="Gensokyo Radio" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="4,4,0,0"/>
 
-        <Button x:Name="BtnClose" HorizontalAlignment="Right" Width="48" Height="48" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Arrow">
-            <iconPacks:PackIconMaterial Kind="Close" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"/>
+        <Button x:Name="BtnClose" Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Right" Width="24" Height="24" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Arrow" Margin="0,4,4,0">
+            <material:PackIcon Kind="Close" Width="16" Height="16" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"/>
         </Button>
 
-        <ProgressBar x:Name="ProBar" Visibility="Hidden" Margin="10,32,0,0" HorizontalAlignment="Left" Width="100" VerticalAlignment="Top" LargeChange="0.01" Maximum="1" SmallChange="0.001" Value="-1"/>
-
-        <Button x:Name="BtnPause" Style="{DynamicResource MaterialDesignFloatingActionButton}" Background="{DynamicResource PrimaryHueLightBrush}" BorderBrush="{DynamicResource PrimaryHueDarkBrush}" Height="Auto" Width="Auto" Margin="136,24,72,56" Cursor="Arrow">
-            <iconPacks:PackIconMaterial Kind="Pause" Width="16" Height="16" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"/>
+        <Button x:Name="BtnPause" Style="{DynamicResource MaterialDesignFloatingActionButton}" Background="{DynamicResource PrimaryHueLightBrush}" BorderBrush="{DynamicResource PrimaryHueDarkBrush}"
+                material:ButtonProgressAssist.IsIndicatorVisible="True" material:ButtonProgressAssist.Value="-1" material:ButtonProgressAssist.IsIndeterminate="False" Height="Auto" Width="Auto" Margin="136,24,72,56" Cursor="Arrow">
+            <material:PackIcon Kind="Pause" Width="24" Height="24" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"/>
         </Button>
         <Button x:Name="BtnPlay" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" Height="Auto" Width="Auto" Margin="92,48,92,8" Cursor="Arrow">
             <Button.Effect>
                 <DropShadowEffect Color="{DynamicResource Accent700}" BlurRadius="8" ShadowDepth="0"/>
             </Button.Effect>
-            <iconPacks:PackIconMaterial Kind="Play" Width="24" Height="24" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"/>
+            <material:PackIcon Kind="Play" Width="48" Height="48" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"/>
         </Button>
         <MediaElement x:Name="Player" Visibility="Hidden" Volume="1" Source="http://stream.gensokyoradio.net:8000/stream/1/" UnloadedBehavior="Manual" LoadedBehavior="Manual"/>
     </Grid>
